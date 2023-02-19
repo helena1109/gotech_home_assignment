@@ -8,8 +8,7 @@ import SnackBar from "../../Components/SnackBar";
 
 
 const MainPage = () => {
-    const [questions, setQuestions] = useState([])
-    const [pagination, setPagination] = useState([])
+    const [questionnaireData, setQuestionnaireData] = useState({})
     const [answers, setAnswers] = useState({})
     const [isSnackBarOpen, setIsSnackBarOpen] = useState(false)
     const {id} = useParams()
@@ -19,8 +18,8 @@ const MainPage = () => {
         const fetchData=async (id)=>{
             try{
                 const res = await fetchQuestionnaireById(id)
-                setQuestions(res.questions)
-                setPagination(res.pagination)
+                setQuestionnaireData(res)
+
             }catch (error){
                 console.log("error:", error)
                 navigate("/NotFound")
@@ -45,11 +44,11 @@ const MainPage = () => {
 
     return (
         <PageWrapper>
-            <QuestionnaireForm answers={answers} questions={questions} handleSubmit={handleSubmit}
+            <QuestionnaireForm answers={answers} questions={questionnaireData.questions} handleSubmit={handleSubmit}
                                handleInputChange={handleInputChange}/>
 
             {
-                pagination && <Pagination pagination={pagination}/>
+                questionnaireData.pagination && <Pagination pagination={questionnaireData.pagination}/>
             }
 
             <SnackBar isOpen={isSnackBarOpen} setIsOpen={setIsSnackBarOpen}/>
