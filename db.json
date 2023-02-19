@@ -1,0 +1,67 @@
+{
+  "questionnaires": [
+    {
+      "id": 1,
+      "pagination": {
+        "prev": null,
+        "next": 2
+      },
+      "questions": [
+        {
+          "id": "question1",
+          "question": "What language is your favorite?",
+          "type": "multiple-choice",
+          "answerOptions": [
+            "JavaScript",
+            "TypeScript",
+            "PizzaScript"
+          ],
+          "required": true,
+          "additionalQuestion":
+            {
+              "id": "question1-1",
+              "causedAnswer": "PizzaScript",
+              "question": "What is you favorite tag in PizzaScript?",
+              "type": "multiple-choice",
+              "answerOptions": [
+                "<Pepperoni/>",
+                "<Margarita/>",
+                "<Hawaii/>"
+              ]
+            }
+
+        },
+        {
+          "id": "question2",
+          "question": "What do you like about programming?",
+          "type": "open-ended",
+          "answerOptions": [],
+          "required": false
+        },
+        {
+          "id": "question3",
+          "question": "How was the assignment?",
+          "type": "multiple-choice",
+          "answerOptions": ["Easy", "Normal", "Hard", "Other"],
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "pagination": {
+        "prev": 1,
+        "next": null
+      },
+      "questions": [
+        {
+          "id": "question1",
+          "question": "Will you hire me?",
+          "type": "multiple-choice",
+          "answerOptions": ["Yes", "No"],
+          "required": true
+        }
+      ]
+    }
+  ]
+}

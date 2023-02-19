@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components"
+import MainPage from "./Pages/Main";
+import {ThemeProvider} from 'styled-components';
+import {theme} from "./Styles/theme";
+import {GlobalStyle} from "./Styles/globalStyle";
+import {Routes, Route, Navigate} from "react-router-dom";
+import MainLayout from "./Layouts/MainLayout";
+import NotFoundPage from "./Pages/NotFound";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <ThemeProvider theme={theme}>
+            <GlobalStyle/>
+            <AppContainer>
+                <Routes>
+                    <Route path="/" element={<MainLayout/>}>
+                        <Route path="" element={<Navigate to="/questionnaire/1"/>}/>
+                        <Route path="/questionnaire/:id" element={<MainPage/>}/>
+                    </Route>
+                    <Route path="*" element={<NotFoundPage/>}/>
+                </Routes>
+            </AppContainer>
+        </ThemeProvider>
+
+
+    );
 }
 
+
+const AppContainer = styled.div`
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+`
 export default App;
